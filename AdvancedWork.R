@@ -134,8 +134,6 @@ str(dat) # returns structure of dataframe
 # returns mean, min and max LifeExp  for that country 
 
 country_name <- subset(dat, dat$country == "Uganda")
-
-
 head(country_name)
 summary(country_name)
 
@@ -197,6 +195,93 @@ analyze <- function(countr) {
   plot(country_name$year, country_name$lifeExp, xlab="Year", ylab="Life Expectancy")
     #  return(country_name)
 }
-analyze(c("Uganda", "Albania"))
+analyze(c(
+  "Uganda",
+  "Albania"))
 
-ls()
+
+#Something is wrong here
+#analyze <- function(cont) {
+#  continent_name <- subset(dat, dat$continent == cont)
+#  #  print(cont)
+#  print(mean(continent_name$lifeExp))
+#  print(max(continent_name$lifeExp))
+#  print(min(continent_name$lifeExp))
+#  out <- c( #"Continent" = cont,
+#    "Mean_le" = mean(continent_name$lifeExp), "Max_le" = max(continent_name$lifeExp), "Min_le" = min(continent_name$lifeExp))
+#  print(out)
+#  plot(continent_name$year, continent_name$lifeExp, xlab="Year", ylab="Life Expectancy")
+#  #  return(continent_name)
+#}
+#analyze(c(
+# "Europe",
+#""Africa))
+
+# continent_name <- subset(dat, dat$continent == "Europe")
+# head(continent_name)
+# summary(continent_name)
+
+# Working on loops - for_loop
+
+best_practice
+
+best_practice_fun <- function(some_argument) {
+  print(some_argument[1])
+  print(some_argument[2])
+  print(some_argument[3])
+  print(some_argument[4])
+  print(some_argument[5])
+  print(some_argument[6])
+}
+
+best_practice_fun(best_practice)
+
+
+# Use loops to limit repetitive work, here: for-loop
+
+for (w in best_practice) {
+  print(w)
+}
+
+best_practice_fun02 <- function(some_argument) {
+  for(w in some_argument) {
+    print(w)
+  }
+}
+
+best_practice_fun02(best_practice)
+
+# Exercise: Generate file "gapminder_52_97" that contains all data for year "1952" and "1997"
+# Exercise: Generate file "gapminder_66_07" that contains all data for year "1966" and "2007"
+# Hint: utilize 'subset' with '&' and for loops
+?subset
+
+# This works
+# gapminder_52_97 <- subset(dat, dat$year == c("1952", "1997"))
+# # head(gapminder_52_97)
+# summary(gapminder_52_97)
+
+#This is what Upendra used
+gapminder_52_97_02 <- subset(dat, dat$year == 1952 | dat$year == 1997)
+# head(gapminder_52_97_02)
+# summary(gapminder_52_97_02)
+
+gapminder_67_07_02 <- subset(dat, dat$year == 1967 | dat$year == 2007)
+
+write.csv(file = "data/gapminder_52_97_02.csv", gapminder_52_97_02)
+write.csv(file = "data/gapminder_67_07_02.csv", gapminder_67_07_02)
+
+#
+list.files(path = "data", pattern = ".csv", full.names = TRUE)
+
+#
+filenames <- list.files(path = "data", pattern = ".csv", full.names = TRUE)
+
+#
+for (f in filenames) {
+  print(f)
+}
+
+# Use function written earlier (Row #153) to print out the
+# results from multiple data frames
+
