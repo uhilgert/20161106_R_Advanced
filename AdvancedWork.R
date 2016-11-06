@@ -198,3 +198,5 @@ analyze <- function(countr) {
     #  return(country_name)
 }
 analyze(c("Uganda", "Albania"))
+
+ls()
